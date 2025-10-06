@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Theme from '../Theme';
 
 const Navbar = () => {
     const links= <>
     
     <Link to="/" className='mr-2'>Home</Link>
     <Link to="/about" className='mr-2'>About</Link>
+    <Link to="/readList" className='mr-2'>Read List</Link>
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm">
@@ -28,7 +30,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end mr-25">
-    <a className="btn">Button</a>
+  <Theme></Theme>
   </div>
 </div>
     );

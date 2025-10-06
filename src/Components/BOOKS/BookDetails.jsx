@@ -1,5 +1,7 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { addData } from '../Utilty/Utility';
+import { addWishData } from '../Utilty/Wishlist';
 
 const BookDetails = () => {
     const {id}=useParams()
@@ -8,9 +10,17 @@ const BookDetails = () => {
     const singleBook=data.find(book=>book.bookId===Number(id))
     
     
-    const{ bookName,author,image,category,review}=singleBook
+    const{ bookName,author,image,category,review,bookId}=singleBook
+    const handleMarkRead=(id)=>{
+      addData(id)
+    }
+    
+    const handleWishList=(id)=>{
+      addWishData(id)
+    }
+    
     return (
-        <div className='flex justify-between items-center'>
+        <div className='md:flex justify-between items-center md:p-0 p-5'>
            <figure className=' bg-slate-100 w-[500px] py-8 rounded-xl'>
     <img className='w-100 mx-auto'
       src={image} 
@@ -29,8 +39,8 @@ const BookDetails = () => {
         <div className=" justify-end">
     <div className='flex gap-3 text-gray-700 font-medium mt-5'>
      
-     <button className='btn btn-accent'>Read</button>
-     <button className='btn btn-info'>Wishlist</button>
+     <button onClick={()=>handleMarkRead(bookId)} className='btn btn-accent'>Mark as Read</button>
+     <button onClick={()=>handleWishList(bookId)} className='btn btn-info'>Add to Wishlist</button>
     </div>
         </div>
       </div>
